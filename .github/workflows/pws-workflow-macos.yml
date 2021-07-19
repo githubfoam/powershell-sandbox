@@ -40,16 +40,21 @@ jobs:
     - name: "test verbose" 
       run: ./scripts/Test_Verbose.ps1
       shell: pwsh    
+# https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-7.1      
     - name: "Install powershell" 
       run: |
         brew install --cask powershell
         pwsh
         brew update
         brew upgrade powershell --cask
+# https://developer.vmware.com/powercli/installation-guide        
     - name: "Install PowerCLI" 
       run: | 
+        Get-module VMware.* -listAvailable | Uninstall-Module -Force
         Install-Module -Name VMware.PowerCLI
         Update-Module -Name VMware.PowerCLI
+        Get-Command -Module *VMware*
+        Get-Module -ListAvailable VMware*
       shell: pwsh         
  
 

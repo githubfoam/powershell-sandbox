@@ -11,7 +11,7 @@
 #--------------------------------------------------------------------------------------------------------
 
 # Path for the Workdir
-$workdir = "C:\tmp\"
+$workdir = "~/tmp"
 
 # Check if work directory exists if not create it
 
@@ -54,11 +54,11 @@ Install-Module -Name VMware.PowerCLI
 # update PowerCLI 
 Update-Module -Name VMware.PowerCLI
 
-# Test VMware PowerCLI module in PowerShell
-Get-Command -Module *VMware*
-
 # check which version of .Net Framework installed
 Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+
+# Test VMware PowerCLI module in PowerShell
+Get-Command -Module *VMware*
 
 # Verifying Installation of PowerCLI
 Get-Module -ListAvailable VMware* 
