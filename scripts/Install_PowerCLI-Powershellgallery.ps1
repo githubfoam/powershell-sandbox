@@ -42,6 +42,12 @@ ELSE
 # install PowerCLI directly from PowerShell Gallery. 
 Install-Module -Name VMware.PowerCLI
 
+# update PowerCLI 
+Update-Module -Name VMware.PowerCLI
+
+
+Get-Module -Name VMware.PowerCLI | Select-Object -Property Name,Version
+
 # Start-Process -FilePath "$workdir\firefox.exe" -ArgumentList "/S"
 
 # Wait few Seconds for the installation to finish
