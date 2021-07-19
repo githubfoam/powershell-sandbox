@@ -4,10 +4,10 @@
 
 #--------------------------------------------------------------------------------------------------------
 # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-psdebug?view=powershell-7.1
-Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
+# Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
 
-$VerbosePreference = "continue"
-Write-Output $VerbosePreference
+# $VerbosePreference = "continue"
+# Write-Output $VerbosePreference
 #--------------------------------------------------------------------------------------------------------
 
 # Path for the Workdir
@@ -22,22 +22,22 @@ ELSE
 
 # Download the installer     
 
-$source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
-#specific version
-# $source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
-$destination = "$workdir\firefox.exe"
+# $source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
+# #specific version
+# # $source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
+# $destination = "$workdir\firefox.exe"
 
 # Check if Invoke-Webrequest exists otherwise execute WebClient
 
-if (Get-Command 'Invoke-Webrequest')
-{
-     Invoke-WebRequest $source -OutFile $destination
-}
-else
-{
-    $WebClient = New-Object System.Net.WebClient
-    $webclient.DownloadFile($source, $destination)
-}
+# if (Get-Command 'Invoke-Webrequest')
+# {
+#      Invoke-WebRequest $source -OutFile $destination
+# }
+# else
+# {
+#     $WebClient = New-Object System.Net.WebClient
+#     $webclient.DownloadFile($source, $destination)
+# }
 
 # install PowerCLI directly from PowerShell Gallery. 
 Install-Module -Name VMware.PowerCLI
