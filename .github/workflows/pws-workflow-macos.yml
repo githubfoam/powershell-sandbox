@@ -40,7 +40,18 @@ jobs:
     - name: "test verbose" 
       run: ./scripts/Test_Verbose.ps1
       shell: pwsh    
-
+    - name: "Install powershell" 
+      run: |
+        brew install --cask powershell
+        pwsh
+        brew update
+        brew upgrade powershell --cask
+    - name: "Install PowerCLI" 
+      run: | 
+        Install-Module -Name VMware.PowerCLI
+        Update-Module -Name VMware.PowerCLI
+      shell: pwsh         
+ 
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   pester-test:
