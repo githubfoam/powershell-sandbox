@@ -1,4 +1,7 @@
 # powershell-sandbox
+[![powershell CI workflow macos](https://github.com/githubfoam/powershell-sandbox/actions/workflows/pws-workflow-macos.yml/badge.svg)](https://github.com/githubfoam/powershell-sandbox/actions/workflows/pws-workflow-macos.yml)  
+[![powershell CI workflow ubuntu](https://github.com/githubfoam/powershell-sandbox/actions/workflows/pws-workflow-ubuntu.yml/badge.svg)](https://github.com/githubfoam/powershell-sandbox/actions/workflows/pws-workflow-ubuntu.yml)  
+[![powershell CI workflow windows](https://github.com/githubfoam/powershell-sandbox/actions/workflows/pws-workflow-windows.yml/badge.svg)](https://github.com/githubfoam/powershell-sandbox/actions/workflows/pws-workflow-windows.yml)
 
 ~~~
 Using a specific shell
