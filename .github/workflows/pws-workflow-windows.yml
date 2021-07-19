@@ -37,9 +37,12 @@ jobs:
             } else {
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }                 
-    - name: "silent install sysinternals" 
+    - name: "sysinternals - silent install" 
       run: .\scripts\Install_Sysinternals.ps1
-      shell: pwsh      
+      shell: pwsh  
+    - name: "PowerCLI - silent install" 
+      run: .\scripts\Install_PowerCLI.ps1
+      shell: pwsh                
     # - name: "silent install firefox" 
     #   run: .\scripts\Install_FireFox.ps1
     #   shell: pwsh           
