@@ -23,3 +23,9 @@ https://www.powershellgallery.com/
 
 ~~~
 
+~~~
+Sysinternals
+PowerCLI
+Firefox
+~~~
+

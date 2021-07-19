@@ -3,9 +3,10 @@ name: "powershell CI workflow macos"
 
 on:
   push:
-    branches: [ test ]
-  # pull_request:
-  #   branches: [ githubactions_powershell ]
+    branches: [ main ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+  
 
 
 jobs:
@@ -48,17 +49,12 @@ jobs:
         brew update
         brew upgrade powershell --cask
 # https://developer.vmware.com/powercli/installation-guide        
-    # - name: "Install PowerCLI" 
-    #   run: | 
-    #     Get-module VMware.* -listAvailable | Uninstall-Module -Force
-    #     Install-Module -Name VMware.PowerCLI
-    #     Update-Module -Name VMware.PowerCLI
-    #     Get-Command -Module *VMware*
-    #     Get-Module -ListAvailable VMware*
-    #   shell: pwsh   
     - name: "PowerCLI - silent install" 
       run: .\scripts\Install_PowerCLI_Powershellgallery_Macos.ps1
-      shell: pwsh              
+      shell: pwsh        
+    - name: "test verbose" 
+      run: .\scripts\Test_Verbose.ps1
+      shell: pwsh                
  
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell

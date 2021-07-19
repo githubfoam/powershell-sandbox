@@ -3,9 +3,10 @@ name: "powershell CI workflow ubuntu"
 
 on:
   push:
-    branches: [ test ]
-  # pull_request:
-  #   branches: [ githubactions_powershell ]
+    branches: [ main ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+  
 
 
 jobs:
@@ -38,20 +39,13 @@ jobs:
             } else {
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }                 
-    # - name: "silent install sysinternals" 
-      # run: .\scripts\Install_Sysinternals.ps1   
-    # - name: "silent install firefox" 
-    #   run: ./scripts/Install_FireFox.ps1
-    #   shell: pwsh  
     - name: "PowerCLI - silent install" 
       run: .\scripts\Install_PowerCLI_Powershellgallery_Ubuntu.ps1
       shell: pwsh              
     - name: "test verbose" 
       run: .\scripts\Test_Verbose.ps1
       shell: pwsh    
-    # - name: "windows version" 
-    #   run: .\scripts\Windows_Version.ps1
-    #   shell: pwsh  
+
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   pester-test:
