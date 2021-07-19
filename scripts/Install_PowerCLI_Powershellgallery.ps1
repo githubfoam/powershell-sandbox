@@ -4,7 +4,7 @@
 
 #--------------------------------------------------------------------------------------------------------
 # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-psdebug?view=powershell-7.1
-# Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
+Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
 
 # $VerbosePreference = "continue"
 # Write-Output $VerbosePreference
@@ -39,13 +39,29 @@ ELSE
 #     $webclient.DownloadFile($source, $destination)
 # }
 
+# Check for the latest PowerCLI Version with PowerShell
+Find-Module -Name VMware.PowerCLI
+
+# Uninstall the existing version
+Get-module VMware.* -listAvailable | Uninstall-Module -Force
+
 # install PowerCLI directly from PowerShell Gallery. 
 Install-Module -Name VMware.PowerCLI
+
+# install on a workstation without administrative privileges, use the Scope parameter to install the module into user profile module path.
+# Install-Module VMware.PowerCLI -Scope CurrentUser
 
 # update PowerCLI 
 Update-Module -Name VMware.PowerCLI
 
+# Test VMware PowerCLI module in PowerShell
+Get-Command -Module *VMware*
 
+# check which version of .Net Framework installed
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+
+# Verifying Installation of PowerCLI
+Get-Module -ListAvailable VMware* 
 Get-Module -Name VMware.PowerCLI | Select-Object -Property Name,Version
 
 # Start-Process -FilePath "$workdir\firefox.exe" -ArgumentList "/S"

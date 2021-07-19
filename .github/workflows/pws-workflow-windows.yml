@@ -41,7 +41,7 @@ jobs:
       run: .\scripts\Install_Sysinternals.ps1
       shell: pwsh  
     - name: "PowerCLI - silent install" 
-      run: .\scripts\Install_PowerCLI-Powershellgallery.ps1
+      run: .\scripts\Install_PowerCLI_Powershellgallery.ps1
       shell: pwsh                
     # - name: "silent install firefox" 
     #   run: .\scripts\Install_FireFox.ps1
