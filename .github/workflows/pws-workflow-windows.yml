@@ -87,6 +87,7 @@ jobs:
         path: Unit.Tests.xml
     if: ${{ always() }}
 
+
   install-dependencies:
     name: "Install dependencies windows latest"
     runs-on: windows-latest
@@ -144,4 +145,25 @@ jobs:
             .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
             Get-ScriptAnalyzerRule #confirm installation
 
-
+  pester-psscriptanalyzer:
+    name: "Pester-based PSScriptAnalyzer Tests windows latest"
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
+      # https://github.com/PowerShell/PSScriptAnalyzer#usage
+    - name: "git clone PSScriptAnalyzer module"
+      shell: pwsh
+      run: |
+            $PSVersionTable
+            git clone https://github.com/PowerShell/PSScriptAnalyzer
+            cd PSScriptAnalyzer
+            .\build.ps1 -PSVersion 7
+            .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
+            Get-ScriptAnalyzerRule #confirm installation
+            ./build -Test
+            Import-Module ./build.psm1
+            Get-TestResults
+            Import-Module ./build.psm1
+            Get-TestFailures
