@@ -146,7 +146,7 @@ jobs:
             Get-ScriptAnalyzerRule #confirm installation
 
   pester-powershellgallery:
-    name: "Pester-based PSScriptAnalyzer Tests windows latest"
+    name: "Pester-based install Tests windows latest"
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
@@ -154,7 +154,9 @@ jobs:
       run: $PSVersionTable
       # https://www.powershellgallery.com/packages/Pester
     - name: "install pester" 
-      run: Install-Module -Name Pester -RequiredVersion 5.2.2
+      run: |
+        Install-Module -Name Pester -RequiredVersion 5.2.2
+        Set-PSRepository PSGallery -InstallationPolicy Trusted
       
   pester-psscriptanalyzer:
     name: "Pester-based PSScriptAnalyzer Tests windows latest"
