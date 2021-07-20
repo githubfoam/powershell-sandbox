@@ -145,6 +145,17 @@ jobs:
             .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
             Get-ScriptAnalyzerRule #confirm installation
 
+  pester-powershellgallery:
+    name: "Pester-based PSScriptAnalyzer Tests windows latest"
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
+      # https://www.powershellgallery.com/packages/Pester
+    - name: "install pester" 
+      run: Install-Module -Name Pester -RequiredVersion 5.2.2
+      
   pester-psscriptanalyzer:
     name: "Pester-based PSScriptAnalyzer Tests windows latest"
     runs-on: windows-latest
@@ -163,7 +174,7 @@ jobs:
             .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
             Get-ScriptAnalyzerRule #confirm installation
             ./build -Test
-            Import-Module ./build.psm1
-            Get-TestResults
-            Import-Module ./build.psm1
-            Get-TestFailures
+            # Import-Module ./build.psm1
+            # Get-TestResults
+            # Import-Module ./build.psm1
+            # Get-TestFailures
