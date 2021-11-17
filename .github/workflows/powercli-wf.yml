@@ -1,0 +1,23 @@
+name: "powercli CI workflow windows"
+
+
+on:
+  push:
+    branches: [ test ]
+
+
+
+jobs:
+
+  windows-latest-pwsh-scripts:
+    name: "powercli- windows-latest Microsoft Windows Server 2019 Datacenter"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "powershell version" 
+      run: $PSVersionTable
+    - name: "PowerCLI - silent install" 
+      run: .\scripts\Install_PowerCLI.ps1      
+    - name: "PowerCLI - silent install" 
+      run: .\scripts\Install_PowerCLI_Powershellgallery.ps1 
