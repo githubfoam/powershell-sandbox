@@ -29,7 +29,7 @@ Install-Module -Name VMware.PowerCLI -Scope CurrentUser
 #verify Installation of PowerCLI
 Get-Module -ListAvailable VMware* 
 
-#uninstall all official PowerCLI modules except VMware.PowerCLI
-(Get-Module VMware.PowerCLI -ListAvailable).RequiredModules | Uninstall-Module -Force
-#uninstall the PowerCLI main module
-Get-Module VMware.PowerCLI -ListAvailable | Uninstall-Module -Force
+# #uninstall all official PowerCLI modules except VMware.PowerCLI
+# (Get-Module VMware.PowerCLI -ListAvailable).RequiredModules | Uninstall-Module -Force
+# #uninstall the PowerCLI main module
+# Get-Module VMware.PowerCLI -ListAvailable | Uninstall-Module -Force
