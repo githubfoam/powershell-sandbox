@@ -18,6 +18,19 @@ jobs:
       uses: actions/checkout@v1
     - name: "powershell version" 
       run: $PSVersionTable
+    - name: "powershell version - preinstalled" 
+      run: | 
+          pwsh
+          $PSVersionTable 
+    - name: "powershell version - preinstalled"
+      shell: pwsh
+      run: |
+          $PSVersionTable 
+          pwsh
+          dir
+          Get-Host
+          Get-History
+          Get-Process       
 #     - name: "Install PSScriptAnalyzer module"
 #       shell: pwsh
 #       run: |

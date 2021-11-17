@@ -1,3 +1,4 @@
+# https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2
 name: "ubuntu powershell CI workflow"
 
 
@@ -17,10 +18,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: "powershell version - preinstalled" 
-      run: $PSVersionTable 
+      run: | 
+          pwsh
+          $PSVersionTable 
     - name: "powershell version - preinstalled"
       shell: pwsh
       run: |
+          $PSVersionTable 
+          pwsh
           dir
           Get-Host
           Get-History
