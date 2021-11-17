@@ -1,0 +1,34 @@
+name: "windows powershell CI workflow "
+
+
+on:
+  push:
+    branches: [ test ]
+
+
+
+jobs:
+
+  windows-latest-pwsh-scripts:
+    name: "pwsh scripts - windows-latest Microsoft Windows Server 2019 Datacenter"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "powershell version" 
+      run: |
+        $PSVersionTable
+        pwsh                    
+    - name: "sysinternals - silent install" 
+      run: .\scripts\Install_Sysinternals.ps1
+      shell: pwsh  
+    - name: "firefox - silent install " 
+      run: .\scripts\Install_FireFox.ps1
+      shell: pwsh           
+    - name: "test verbose" 
+      run: .\scripts\Test_Verbose.ps1
+      shell: pwsh    
+    - name: "windows version" 
+      run: .\scripts\Windows_Version.ps1
+      shell: pwsh  
+

@@ -1,0 +1,64 @@
+name: "Pester CI workflow windows"
+
+
+on:
+  push:
+    branches: [ test ]
+
+
+
+jobs:
+
+
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
+  pester-test:
+    name: "Test PowerShell windows latest"
+    runs-on: windows-latest
+    steps:
+    - name: "Check out repository code"
+      uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
+    # - name: "Perform a Pester test from the command-line"
+    #   shell: pwsh
+    #   run: Test-Path resultsfile.log | Should -Be $true
+    - name: "Perform a Pester test from the Tests.ps1 file"
+      shell: pwsh
+      run: |
+        Invoke-Pester Unit.Tests.ps1 -Passthru
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell#packaging-workflow-data-as-artifacts
+  upload-pester-results:
+    name: "Run Pester and upload results windows latest"
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
+    - name: "Test with Pester"
+      shell: pwsh
+      run: Invoke-Pester Unit.Tests.ps1 -Passthru | Export-CliXml -Path Unit.Tests.xml
+    - name: "Upload test results"
+      uses: actions/upload-artifact@v2
+      with:
+        name: ubuntu-Unit-Tests
+        path: Unit.Tests.xml
+    if: ${{ always() }}
+
+
+
+
+
+  pester-powershellgallery:
+    name: "Pester-based install Tests windows latest"
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
+      # https://www.powershellgallery.com/packages/Pester
+    - name: "install pester" 
+      run: |
+        Install-Module -Name Pester -RequiredVersion 5.2.2
+        Set-PSRepository PSGallery -InstallationPolicy Trusted

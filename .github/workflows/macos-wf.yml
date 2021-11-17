@@ -16,21 +16,31 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "powershell version" 
-      run: $PSVersionTable
     - name: "powershell version - preinstalled" 
       run: | 
-          pwsh
-          $PSVersionTable 
-    - name: "powershell version - preinstalled"
-      shell: pwsh
-      run: |
-          $PSVersionTable 
           pwsh
           dir
           Get-Host
           Get-History
-          Get-Process       
+          Get-Process           
+    - name: "powershell version - preinstalled"
+      shell: pwsh
+      run: |
+          pwsh
+          dir
+          Get-Host
+          Get-History
+          Get-Process      
+    - name: "Running PowerShell Scripts From Bash" 
+      run: |
+          cat <<EOT | sudo tee /tmp/DrivesInformation.ps1
+          pwsh
+          dir
+          Get-Host
+          Get-History          
+          Get-PSDrive
+          EOT        
+          pwsh /tmp/DrivesInformation.ps1              
 #     - name: "Install PSScriptAnalyzer module"
 #       shell: pwsh
 #       run: |
