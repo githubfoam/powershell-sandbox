@@ -17,7 +17,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: "powershell version" 
-#       run: $PSVersionTable
+      run: $PSVersionTable
 #     - name: "Install PSScriptAnalyzer module"
 #       shell: pwsh
 #       run: |

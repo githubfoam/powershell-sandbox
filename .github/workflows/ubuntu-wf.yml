@@ -16,9 +16,65 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "powershell version" 
-      run: $PSVersionTable
-      shell: pwsh 
+    - name: "powershell version - preinstalled" 
+      run: $PSVersionTable 
+    - name: "powershell version - preinstalled"
+      shell: pwsh
+      run: |
+          dir
+          Get-Host
+          Get-History
+          Get-Process      
+    - name: "Install PowerShell using Snap" 
+      run: |
+          sudo apt-get install snap snapd -y
+          sudo snap install powershell --classic 
+          pwsh
+          dir
+          Get-Host
+          Get-History
+          Get-Process
+          exit
+          sudo snap remove powershell #uninstall the PowerShell
+    - name: "Install PowerShell from Ubuntu Repository" 
+      run: |
+          wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+          sudo dpkg -i packages-microsoft-prod.deb
+          sudo apt-get update -y
+          sudo apt-get install powershell -y
+          pwsh
+          dir
+          Get-Host
+          Get-History
+          Get-Process
+          exit
+          sudo apt-get remove powershell -y #uninstall the PowerShell  
+    - name: "Installing PowerShell via the .NET SDK" 
+      run: |
+          sudo apt-get update -y
+          sudo apt-get install dotnet-sdk-5.0 -y
+          # The dotnet tool command specifies a NuGet package which PowerShell is packaged as
+          # By specifying the --global option, dotnet installs the PowerShell package to ~\.dotnet\tools 
+          # and ensures the directory is in the system PATH
+          sudo dotnet tool install --global PowerShell 
+          pwsh
+          dir
+          Get-PSDrive | Format-Table -Auto
+          Get-Module -ListAvailable
+          Find-Module Pester /A
+          Get-InstalledModule
+          Get-InstalledModule -Name "Pester"
+          Get-Command -Module Pester #all commands inside of the Pester module
+          Get-Host
+          Get-History
+          Get-Process
+          exit
+    - name: "Running PowerShell Scripts From Bash" 
+      run: |
+          cat <<EOT | sudo tee /tmp/DrivesInformation.ps1
+          Get-PSDrive
+          pwsh /tmp/DrivesInformation.ps1
+          EOT             
 #     - name: "Install PSScriptAnalyzer module"
 #       shell: pwsh
 #       run: |
