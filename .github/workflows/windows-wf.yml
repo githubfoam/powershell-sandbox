@@ -19,6 +19,8 @@ jobs:
       run: |
         $PSVersionTable
         pwsh                    
+    - name: "msopenjdk - silent install" 
+      run: .\scripts\Install_Msopenjdk_msiexec.ps1    
     - name: "sysinternals - silent install" 
       run: .\scripts\Install_Sysinternals.ps1
       shell: pwsh  

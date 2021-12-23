@@ -42,11 +42,16 @@ ELSE
 # Check for the latest PowerCLI Version with PowerShell
 Find-Module -Name VMware.PowerCLI
 
+
 # Uninstall the existing version
 Get-module VMware.* -listAvailable | Uninstall-Module -Force
 
+# https://www.powershellgallery.com/packages/VMware.PowerCLI/
 # install PowerCLI directly from PowerShell Gallery. 
-Install-Module -Name VMware.PowerCLI
+# Install-Module -Name VMware.PowerCLI
+# The modules are installed to $home\Documents\WindowsPowerShell\Modules. 
+Install-Module VMware.PowerCLI -Scope CurrentUser
+
 
 # install on a workstation without administrative privileges, use the Scope parameter to install the module into user profile module path.
 # Install-Module VMware.PowerCLI -Scope CurrentUser
