@@ -25,6 +25,12 @@ jobs:
     - name: "windows version" 
       run: .\scripts\Windows_Version.ps1
       shell: pwsh  
-    # - name: "firefox - silent install " 
-    #   run: .\scripts\Install_FireFox.ps1
-    #   shell: pwsh 
+    - name: "chrome - silent uninstall " 
+      run: .\scripts\uninstall_chrome.ps1
+      shell: pwsh 
+    - name: "chrome - silent install " 
+      run: .\scripts\install_chrome.ps1
+      shell: pwsh       
+    - name: "chrome - clear https cache" 
+      run: .\scripts\clear_chrome_https_cache.ps1
+      shell: pwsh       
