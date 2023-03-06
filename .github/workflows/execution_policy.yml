@@ -1,4 +1,4 @@
-name: "windows powershell CI workflow "
+name: "execution policy CI workflow "
 
 
 on:
@@ -20,7 +20,7 @@ jobs:
       run: |
         $PSVersionTable
         pwsh                              
-        
+
     - name: "test verbose" 
       run: .\scripts\Test_Verbose.ps1
       shell: pwsh    
