@@ -30,6 +30,6 @@ jobs:
       shell: pwsh  
 
     - name: "retrieves and sets the execution policy for the script runner " 
-      run: .\scripts\retrieves and sets the execution policy for the script runner.ps1
+      run: '.\scripts\retrieves and sets the execution policy for the script runner.ps1'
       shell: pwsh 
      
