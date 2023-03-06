@@ -1,4 +1,4 @@
-name: "windows powershell CI workflow "
+name: "google chrome windows powershell CI workflow "
 
 
 on:

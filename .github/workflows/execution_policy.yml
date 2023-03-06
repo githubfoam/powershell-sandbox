@@ -35,6 +35,10 @@ jobs:
 
     - name: "Run PowerShell script that retrieves and sets the execution policy for the script runner"
       run: |
+          & "retrieves and sets the execution policy for the script runner.ps1"
+
+    - name: "Run PowerShell script that retrieves and sets the execution policy for the script runner"
+      run: |
           & "\scripts\retrieves and sets the execution policy for the script runner.ps1"
           
     - name: "retrieves and sets the execution policy for the script runner " 
