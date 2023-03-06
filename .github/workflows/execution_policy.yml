@@ -29,6 +29,14 @@ jobs:
       run: .\scripts\Windows_Version.ps1
       shell: pwsh  
 
+    - name: Set PowerShell execution policy
+      run: |
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+    - name: "Run PowerShell script that retrieves and sets the execution policy for the script runner"
+      run: |
+          & "retrieves and sets the execution policy for the script runner.ps1"
+          
     - name: "retrieves and sets the execution policy for the script runner " 
       run: '.\scripts\retrieves and sets the execution policy for the script runner.ps1'
       shell: pwsh 
