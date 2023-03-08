@@ -1,4 +1,4 @@
-﻿# Check if Google Chrome is installed
+﻿# Check if Google Chrome is installed test
 $chrome = Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object { $_.DisplayName -like "Google Chrome" }
 
 if ($chrome -eq $null) {
