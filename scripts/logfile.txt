@@ -1,0 +1,7 @@
+IP Address	Time Stamp	City
+10.45.4.5	10:04:45	new york
+10.45.4.6	10:04:48	brussels
+09:10:10	174.45.4.5	london
+amsterdam	10:04:50	174.45.4.5
+10.45.4.9	10:04:51	tokyo
+10.45.4.11	10:04:52	beijing
