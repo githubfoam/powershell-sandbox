@@ -2,7 +2,7 @@
 #Generate a PowerShell script that assumes that each line in the log file is tab-separated and contains three fields in the order of IP Address, Time Stamp, and City. If the line matches the expected order it splits each line using the tab character and checks if the line contains the expected number of fields. If the line contains the expected number of fields it trims the fields and checks if the IP address, timestamp, and city have the proper format. If the line or any of the fields in the line do not match the expected format, it indicates an anomaly and prints the line.
 
 #$LogFilePath = "C:\path\to\log\file.txt"
-$LogFilePath = "logfile.txt"
+$LogFilePath = "scripts\inputs\logfile.txt"
 
 # Read the log file
 $LogFileContent = Get-Content -Path $LogFilePath
