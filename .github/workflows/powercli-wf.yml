@@ -18,6 +18,8 @@ jobs:
     - name: "powershell version" 
       run: $PSVersionTable
     - name: "PowerCLI - silent install" 
+      run: .\scripts\MajorityElement.ps1       
+    - name: "PowerCLI - silent install" 
       run: .\scripts\Install_PowerCLI.ps1      
     - name: "PowerCLI - silent install" 
       run: .\scripts\Install_PowerCLI_Powershellgallery.ps1 
