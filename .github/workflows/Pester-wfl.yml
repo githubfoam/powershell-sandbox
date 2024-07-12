@@ -51,7 +51,7 @@ jobs:
 
 
   pester-powershellgallery:
-    name: "Pester-based install Tests windows latest"
+    name: "Pester-based install Tests windows latest test"
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
