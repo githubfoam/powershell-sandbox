@@ -1,5 +1,6 @@
 # Import the module
-Import-Module -Name ./MajorityElement.psm1
+# Import-Module -Name ./MajorityElement.psm1
+Import-Module -Name ./scripts/MajorityElement.psm1
 
 # Example arrays
 $arr1 = @(2, 2, 1, 1, 1, 2, 2)
